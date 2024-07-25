@@ -1,67 +1,101 @@
-.cards {
+.card {
+    width: 340px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 500px;   
+}
+.card-img-top{
+    max-width: 48%;
+    height: 13rem;
+    margin: 10px;
+}
+.card-title{
+    font-size: 20px;
+    font-weight:600;
+    font-family:'Arial sans-serif';
+    text-align: left;
+    
+}
+.product-container {
+    display: flex;
+    align-items: center;
+    padding: 20px; 
+    border-width:0.2px;
+    border: solid;
+    border-color: lightgray;
+    width: 100%;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.specification-container{
+    margin-top: 0.2px;
+    border: width 0.5px;
+    border: solid;
+    border-color: lightgray;
+}
+.card-text {
+    font-size: 15px;
+    font-family:'Arial sans-serif';
+    color:gray;
+   
+}
+.review-container{
+    margin-top: 0.2px;
+    border: width 0.5px;
+    border: solid;
+    border-color: lightgray;
+    
+}
+.card-for-register {
     border: 1px solid hsl(0,0%,80%);
     border-radius: 3px;
     box-shadow: 5px 5px hsl(0,0%,0%,0.1);
     padding: 20px;
-    margin: 5px;
+    margin: 15px;
     text-align: center;
-    max-width:250px !important;
-    display: inline-block;
+    height: 40rem; 
+    overflow: hidden;
+    text-align: left;
 }
-.cards .card-image{
-    max-width: 40%;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 5px; 
-}
-.cards .card-title{
-    font-family: Arial, sans-serif;
-    margin:5;
-    font-size: 20px;
-    font-weight: 600;
-    color:hsl(0,0%,15%);
-}
-.cards .card-text{
-    font-family: Arial, sans-serif;
-    color:hsl(0,0%,40%);
-    margin-bottom: 30px;
-}
-.cards a {
-    display: block;  
-    width: 100%;  
-    border: 2px solid; 
-    padding: 15px 0; 
-    padding-left: 0px;
-    border-color: rgba(220, 208, 208, 0.7);
-    text-decoration: none;
-    color: blue;
-    font-family: sans-serif;
-}
-
-.cards a:hover {
-    background-color: lightgray;
-}
-
-.logo-text-container{
+.card-container{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.image-container{
+    width: 20rem;
+    display: flex;
+    height: 50%;
+    justify-content: center;
     align-items: center;
-    margin-bottom:20px;
+    
 }
-.logo{
-    max-width: 10%;
-    margin-right: 8px;
+.cart-button{
+    background-color: gold;
+    color: black;
+    width:315px;
+    height: 35px;
+    border-radius: 4px;
+    border-width: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin:10px;
+    margin-bottom: 20px;
 }
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 10px;
-    row-gap: 10px;
-    padding: 10px;
+.cart-button:hover{
+    background-color: white;
+    color: black;
+    
 }
-.name{
-    color:hsl(0,0%,40%);
-    display:flex;
-    flex-direction: row;
-    font-family: Arial,sans-serif;
-    align-items: last baseline;
+.stars {
+    font-size: 24px;
+    color: gold; /* or any color you prefer */
 }

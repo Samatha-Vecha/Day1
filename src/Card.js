@@ -1,112 +1,45 @@
-import './Card.css';
-function Card(){
+import React,{ useState , useEffect} from 'react';
+import "./Card.css";
+function CardUI(props){
+    const width = 250;
+    const [count, setCount] = useState(0);
+    useEffect(()=>{
+        //setCount(5);
+        console.log('use effect is called');
+    },[count] );
+    const buttonClickAdd = () => {
+        setCount(count+1);
+    }
+    const buttonClickSubtract = () => {
+        if(count > 0)
+            setCount(count-1);
+    }
     return (
-        <div className="card-container">
-            <div className="cards">
-                <img className="card-image" src="/profile_logo.png" alt="profile" />
-                <div className="name">
-                    <h1 className = "card-title">Scott Ayres</h1>
-                    <p>.2nd</p>
-                </div>
-                <p className = "card-text">Busting social media myths at the Social Media Lab,...</p>
-                <div className ="logo-text-container">
-                    <img src="profile_logo.png" alt="Logo" className="logo" />
-                    <span class="logo-text">23 shared connections</span>
-                </div>
-                <a href="#">Connect</a>
+        <div className="card" style={{width}}>
+            <img src="profile_logo.png" 
+            alt="logo"
+            style={{border: '0px solid #000000',
+                    borderRadius: '20px'
+                    
+            }} className="card-img"/>
+            <div className="card-body">
+                <h1 className="card-title">{props.userFromArr.Name}</h1>
+                <p className="card-text">{props.userFromArr.desc}</p>
             </div>
-            <div className="cards">
-                <img className="card-image" src="/profile_logo.png" alt="profile" />
-                <div className="name">
-                    <h1 className = "card-title">Richard Beeson</h1>
-                    <p>.2nd</p>
-                </div>
-                <p className = "card-text">SaaS Customer Onboarding Manager/Producer and...</p>
-                <div className ="logo-text-container">
-                    <img src="profile_logo.png" alt="Logo" className="logo" />
-                    <span class="logo-text">7 shared connections</span>
-                </div>
-                <a href="#">Connect</a>
-            </div>
-            <div className="cards">
-                <img className="card-image" src="/profile_logo.png" alt="profile" />
-                <div className="name">
-                    <h1 className = "card-title">Jacob Hilpertsh...</h1>
-                    <p>.2nd</p>
-                </div>
-                <p className = "card-text">Harness your social media content and engagement..</p>
-                <div className ="logo-text-container">
-                    <img src="profile_logo.png" alt="Logo" className="logo" />
-                    <span class="logo-text">5 shared connections</span>
-                </div>
-                <a href="#">Connect</a>
-            </div>
-            <div className="cards">
-                <img className="card-image" src="/profile_logo.png" alt="profile" />
-                <div className="name">
-                    <h1 className = "card-title">Stephanie Swee...</h1>
-                    <p>.2nd</p>
-                </div>
-                <p className = "card-text">Customer Support/Software QA Tester</p>
-                <div className ="logo-text-container">
-                    <img src="profile_logo.png" alt="Logo" className="logo" />
-                    <span class="logo-text">4 shared connections</span>
-                </div>
-                <a href="#">Connect</a>
-            </div>
-            <div className="cards">
-                <img className="card-image" src="/profile_logo.png" alt="profile" />
-                <div className="name">
-                    <h1 className = "card-title">Sarah Hecker</h1>
-                    <p>.2nd</p>
-                </div>
-                <p className = "card-text">US Support & Affiliate Manager at Agorapulse</p>
-                <div className ="logo-text-container">
-                    <img src="profile_logo.png" alt="Logo" className="logo" />
-                    <span class="logo-text">3 shared connections</span>
-                </div>
-                <a href="#">Connect</a>
-            </div>
-            <div className="cards">
-                <img className="card-image" src="/profile_logo.png" alt="profile" />
-                <div className="name">
-                    <h1 className = "card-title">Curt Ziegler</h1>
-                    <p>.2nd</p>
-                </div>
-                <p className = "card-text">Customer Support Hero at Agorapulse</p>
-                <div className ="logo-text-container">
-                    <img src="profile_logo.png" alt="Logo" className="logo" />
-                    <span class="logo-text">3 shared connections</span>
-                </div>
-                <a href="#">Connect</a>
-            </div>
-            <div className="cards">
-                <img className="card-image" src="/profile_logo.png" alt="profile" />
-                <div className="name">
-                    <h1 className = "card-title">Hannah Recker</h1>
-                    <p>.2nd</p>
-                </div>
-                <p className = "card-text">Inbound & Marketing Operations Manager at...</p>
-                <div className ="logo-text-container">
-                    <img src="profile_logo.png" alt="Logo" className="logo" />
-                    <span class="logo-text">4 shared connections</span>
-                </div>
-                <a href="#">Connect</a>
-            </div>
-            <div className="cards">
-                <img className="card-image" src="/profile_logo.png" alt="profile" />
-                <div className="name">
-                    <h1 className = "card-title">Michael Angiletta</h1>
-                    <p>.2nd</p>
-                </div>
-                <p className = "card-text">Growth Marketing | CMO | Agorapulse</p>
-                <div className ="logo-text-container">
-                    <img src="profile_logo.png" alt="Logo" className="logo" />
-                    <span class="logo-text">3 shared connections</span>
-                </div>
-                <a href="#">Connect</a>
+           <button type="button" className="btn btn-primary">Connect</button>
+           <div>
+            {
+            count === 0 ? 
+                    (<button className="btn btn-success" onClick = {buttonClickAdd} style={{margin:'15px'}}>Add to Cart</button>) : 
+                    (<div style={{display:'flex' , height:'40px',margin:'15px'}}>
+                        <button className="btn btn-dark" onClick={buttonClickAdd}>+</button>
+                        <h1 style={{margin:'0px 15px'}}>{count}</h1>
+                        <button className="btn btn-primary" onClick={buttonClickSubtract}>-</button>
+                    </div>)
+            }
             </div>
         </div>
+       
     )
 }
-export default Card;
+export default CardUI;
