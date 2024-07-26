@@ -1,9 +1,9 @@
 import {  useEffect, useState } from "react";
 //import { useContext } from 'react';
 import "./Card.css";
-//import Navigation from "./Navigation";
 //import { globalContext } from "./App";
 import Nine from "./Nine";
+import Navigation from "./Navigation";
 function DataFetching(){
     const [data, setData] = useState([]);
     useEffect(()=>{
@@ -20,8 +20,9 @@ function DataFetching(){
         fetchMyData();
     },[])
     return (
+        <div>
+            <Navigation/>
         <div className="card-container">
-            {/* <Navigation/> */}
                 {data.map((dataItem,index)=> (
                 <div className="card" key={index}>
                     <div className='image-container'>
@@ -38,6 +39,7 @@ function DataFetching(){
                     <Nine/>
                 </div>
                 ))}
+        </div>
         </div>
     );
 }

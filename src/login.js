@@ -1,12 +1,12 @@
 //consumer of context
 import "./Card.css";
-import { useContext, useEffect, useRef,useState } from "react";
-import { UserContext } from "./Home";
+import { useContext,useEffect, useRef,useState } from "react";
+import { globalContext } from "./App";
 function LoginForm(){
     const firstRef = useRef(null); //reference which is used on a particular DOM element.
     const secRef = useRef(null);
     const [resultMessage,setMessage] = useState('');
-    const {isLogin,setIsLogin} = useContext(UserContext);
+    const {globalIsLogin,setGlobalIsLogin} = useContext(globalContext);
     useEffect(()=>{
         if(firstRef.current)
             firstRef.current.focus(); //cursor will come in firstRef text area when component is refreshed.
@@ -17,10 +17,10 @@ function LoginForm(){
         console.log(firstRef.current.value);
         if(firstRef.current.value ===  secRef.current.value){
             setMessage('Successful');
-            setIsLogin(true);
+            setGlobalIsLogin(true);
         } else {
             setMessage('Unsuccessfull');
-            setIsLogin(false);
+            setGlobalIsLogin(false);
         }
         firstRef.current.value=''; //clear value.
         secRef.current.value='';
@@ -28,7 +28,7 @@ function LoginForm(){
     }
     return(
         <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'row',marginTop:'100px'}}>
-        <div className="card" style={{width: '17rem'}}>
+        <div className="card-for-login" style={{width: '17rem'}}>
             <h5 className="card-title">Login</h5>
             <p style={{textAlign:'left'}}>Provide your details to login.</p>
             <form onSubmit={formSubmitted}>
