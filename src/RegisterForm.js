@@ -1,4 +1,4 @@
-import { useState,useContext } from "react";
+import { useState,useContext,useRef } from "react";
 import { globalContext } from "./App";
 
 function Register(){
@@ -9,8 +9,10 @@ function Register(){
     const [year, setYear] = useState("");
     const [gender, setGender] = useState("");
     const [user,setUser] = useState([]);
-    const {globalObject,setglobalObject} = useContext(globalContext);
-
+    const {setglobalObject} = useContext(globalContext);
+    const idRef = useRef(null);
+    const passwordRef = useRef(null);
+    const emailRef = useRef(null);
     //const [studentData, setStudentData] = useState([]);
     const getCollegeId = (event) => {
         setCollegeId(event.target.value);
@@ -41,13 +43,14 @@ function Register(){
         const obj = {
             collegeId, password, email, branch, year, gender
         }
+       
         console.log(obj);
         setUser(obj);
         console.log(user);
         setglobalObject(obj);
-        setCollegeId("");
-        setPassword("");
-        setEmail("");
+        idRef.current.value = '';
+        passwordRef.current.value = '';
+        emailRef.current.value = '';
         setBranch("");
         setYear("");
         setGender("");
@@ -65,14 +68,16 @@ function Register(){
                        className="form-control" 
                        id="exampleInputId" 
                        placeholder="College Id" 
+                       ref = {idRef}
                        onChange={getCollegeId}
                 />
             </div>
             <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" class="form-label">Password</label>
+                <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <input type="password" 
                        className="form-control"  
                        id="exampleInputPassword1" 
+                       ref = {passwordRef}
                        placeholder="Password" 
                        onChange={getPassword}
                 />
@@ -83,6 +88,7 @@ function Register(){
                        className="form-control"
                        id="exampleInputEmail1" 
                        aria-describedby="emailHelp" 
+                       ref = {emailRef}
                        placeholder="Email address"
                        onChange={getEmail}
                 />

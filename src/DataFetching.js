@@ -1,11 +1,13 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 //import { useContext } from 'react';
 import "./Card.css";
 //import { globalContext } from "./App";
 import Nine from "./Nine";
 import Navigation from "./Navigation";
 function DataFetching(){
+    //const {cartList,setCartList} = useContext(globalContext)
     const [data, setData] = useState([]);
+    //const [globalCount,setglobalCount] = useState(0);
     useEffect(()=>{
         const fetchMyData = async () => { //async: When you tell a function it’s async, you're saying, "This function might take some time, so get ready to wait."
                 const res = await fetch('https://fakestoreapi.com/products');
@@ -19,6 +21,11 @@ function DataFetching(){
         } 
         fetchMyData();
     },[])
+    // const addToCart = (newObject) => {
+    //     if(globalCount > 0){
+    //     setCartList([...cartList,newObject])
+    //     }
+    // }
     return (
         <div>
             <Navigation/>

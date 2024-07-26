@@ -1,4 +1,4 @@
-import React, { useContext,useState } from 'react';
+import React, { useContext,useEffect,useState } from 'react';
 import { globalContext } from './App';
 import Navigation from './Navigation';
 function Profile() {
@@ -6,9 +6,12 @@ function Profile() {
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
-
+    useEffect(() => {
+        const name = localStorage.getItem("name");
+        console.log(name);
+    })
     const { globalObject } = useContext(globalContext);
-    const {globalIsLogin,setGlobalIsLogin} = useContext(globalContext)
+    const {setGlobalIsLogin} = useContext(globalContext)
     if (!globalObject) {
         return <div>Please register first.</div>;
     }

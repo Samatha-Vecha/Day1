@@ -1,8 +1,8 @@
 import {  useEffect, useState} from "react";
 import { useContext } from "react";
 import { globalContext } from "./App";
-function Nine(){
-    const {globalCount,setglobalCount} = useContext(globalContext)
+function Nine({ dataItem }){
+    const {globalCount,setglobalCount,cartList,setCartList} = useContext(globalContext)
     const [count, setCount] = useState(0);
     //hooks
     useEffect(()=>{
@@ -12,18 +12,25 @@ function Nine(){
     const buttonClickAdd = () => {
         setCount(count+1);
         setglobalCount(globalCount+1)
+        addToCart({ ...dataItem, quantity: count + 1 });
     }
     const buttonClickSubtract = () => {
         if(count > 0){
             setCount(count-1);
             setglobalCount(globalCount-1);
+            addToCart({ ...dataItem, quantity: count - 1 });
         }
     }
     const AddToCart = () => { 
         setCount(1);
         setglobalCount(globalCount+1);
+        addToCart({ ...dataItem, quantity: 1 });
     }  
-
+    const addToCart = (newObject) => {
+        if(globalCount > 0){
+        setCartList([...cartList,newObject])
+        }
+    }
     return(
         
         <div>

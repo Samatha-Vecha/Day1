@@ -9,7 +9,7 @@ function ProductPage(props){
         console.log(props.value);
         //setCount(5);
         console.log('use effect is called');
-    },[]);
+    },[props.value]);
     
     const buttonClickAdd = () => {
         setCount(count+1);

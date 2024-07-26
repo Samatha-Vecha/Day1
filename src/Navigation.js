@@ -3,7 +3,7 @@ import { useContext } from "react";
 import {  globalContext } from "./App";
 
 function Navigation() {
-    const {globalCount,setglobalCount} = useContext(globalContext);
+    const {globalCount} = useContext(globalContext);
     const { globalObject } = useContext(globalContext);
     return (
         <div style={{display:'flex', gap:'10px',flexDirection:'row',justifyContent:'space-between',background:'#FFEFEE',height:'40px'}}>

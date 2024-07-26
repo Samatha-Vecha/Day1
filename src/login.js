@@ -2,11 +2,12 @@
 import "./Card.css";
 import { useContext,useEffect, useRef,useState } from "react";
 import { globalContext } from "./App";
+//import Register from "./RegisterForm";
 function LoginForm(){
     const firstRef = useRef(null); //reference which is used on a particular DOM element.
     const secRef = useRef(null);
     const [resultMessage,setMessage] = useState('');
-    const {globalIsLogin,setGlobalIsLogin} = useContext(globalContext);
+    const {setGlobalIsLogin,globalObject} = useContext(globalContext);
     useEffect(()=>{
         if(firstRef.current)
             firstRef.current.focus(); //cursor will come in firstRef text area when component is refreshed.
@@ -15,11 +16,12 @@ function LoginForm(){
         event.preventDefault();
         console.log('Form Submitted!');
         console.log(firstRef.current.value);
-        if(firstRef.current.value ===  secRef.current.value){
-            setMessage('Successful');
+        if(firstRef.current.value ===  globalObject.collegeId && secRef.current.value === globalObject.password){
+            setMessage('you are successfully logged in');
             setGlobalIsLogin(true);
+            localStorage.setItem("name","ReactJS");
         } else {
-            setMessage('Unsuccessfull');
+            setMessage('not matched');
             setGlobalIsLogin(false);
         }
         firstRef.current.value=''; //clear value.
