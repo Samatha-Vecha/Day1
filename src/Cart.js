@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { globalContext } from "./App";
 function Cart() {
-    const {cartList,setCartList} = useContext(globalContext)
+    const {cartList} = useContext(globalContext)
     return (
         <div>
             <h1>Cart List</h1>
